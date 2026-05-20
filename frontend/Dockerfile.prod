@@ -1,11 +1,10 @@
 FROM node:22 AS builder
 WORKDIR /app
-COPY frontend/package*.json ./
+COPY package*.json ./
 RUN npm ci
-COPY frontend/ ./
-RUN npm run build   # создаст /app/dist
+COPY . ./
+RUN npm run build
 
-# Отдаём статику через простой nginx (можно и без него, если общий nginx будет брать файлы volume)
 FROM nginx:alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
 EXPOSE 80
