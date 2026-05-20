@@ -8,10 +8,10 @@ const echo = new Echo({
 
     key: 'pognali24key',
 
-    wsHost: 'localhost',
-    wsPort: 8080,
+    wsHost: window.location.hostname,
+    wsPort: window.location.protocol === 'https:' ? 443 : 80,
 
-    forceTLS: false,
+    forceTLS: window.location.protocol === 'https:',
     disableStats: true,
 
     authEndpoint: '/broadcasting/auth',
