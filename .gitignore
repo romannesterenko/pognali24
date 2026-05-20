@@ -3,6 +3,7 @@ backend/.env.prod
 backend/.env.*.local
 backend/vendor/
 frontend/node_modules/
+frontend/.env
 mysql_data/
 mysql_data_prod/
 backend_storage/

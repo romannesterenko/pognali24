@@ -1,7 +1,7 @@
 import api from './axios'
 
 export const csrf = async () => {
-    await api.get('http://localhost/sanctum/csrf-cookie')
+    await api.get('/sanctum/csrf-cookie')
 }
 
 export const register = async (data: any) => {

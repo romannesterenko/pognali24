@@ -14,7 +14,7 @@ const echo = new Echo({
     forceTLS: false,
     disableStats: true,
 
-    authEndpoint: 'http://localhost/api/broadcasting/auth',
+    authEndpoint: import.meta.env.VITE_API_URL + '/broadcasting/auth',
 
     auth: {
         headers: {
