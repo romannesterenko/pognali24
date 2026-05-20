@@ -1,0 +1,35 @@
+FROM php:8.3-fpm
+
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    zip \
+    unzip \
+    libzip-dev \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    && docker-php-ext-install pdo_mysql mbstring zip exif pcntl
+
+RUN pecl install redis && docker-php-ext-enable redis
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+WORKDIR /var/www/backend
+
+# Копируем только бэкенд (папка backend/ из проекта)
+COPY backend/ .
+
+# Устанавливаем зависимости без dev-пакетов
+RUN composer install --no-dev --optimize-autoloader --no-interaction
+
+# Оптимизация Laravel
+RUN php artisan key:generate
+RUN php artisan config:cache
+RUN php artisan route:cache
+RUN php artisan view:cache
+
+# Права на storage (если нужны)
+RUN chown -R www-data:www-data /var/www/backend/storage /var/www/backend/bootstrap/cache
+
+CMD ["php-fpm"]

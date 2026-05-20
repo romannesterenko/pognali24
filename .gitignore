@@ -1,0 +1,9 @@
+backend/.env
+backend/.env.prod
+backend/.env.*.local
+backend/vendor/
+frontend/node_modules/
+mysql_data/
+mysql_data_prod/
+backend_storage/
+node_modules/

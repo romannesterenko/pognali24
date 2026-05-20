@@ -1,0 +1,19 @@
+ - Рестарт фронтенда
+docker compose restart frontend
+
+ - Рестарт бэкенда
+docker compose restart backend
+
+ - рестарт полностью
+docker compose restart frontend && docker compose restart backend
+
+ - старт фронта
+docker compose exec frontend npm run dev
+
+ - полный старт проекта
+docker compose up -d && docker compose exec frontend npm run dev
+
+ - полный рестарт проекта
+docker compose restart && docker compose exec frontend npm run dev
+
+docker compose down && docker compose up -d --build && docker compose exec frontend npm run dev
