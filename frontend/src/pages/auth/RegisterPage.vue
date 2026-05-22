@@ -64,7 +64,7 @@ const submit = async () => {
     router.push('/')
 
   } catch (e: any) {
-
+    console.log(e);
     error.value =
         e.response?.data?.message ||
         'Ошибка регистрации'
