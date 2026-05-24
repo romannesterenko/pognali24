@@ -97,7 +97,7 @@ onMounted(loadTrips)
             <div class="max-w-4xl">
               <h1 class="text-4xl sm:text-5xl lg:text-7xl font-black leading-tight text-slate-900">
                 Поездки по
-                <span class="text-blue-600">Новороссии</span>
+                <span class="text-blue-600">России</span>
               </h1>
               <p class="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl">
                 Находите попутчиков, бронируйте поездки и путешествуйте
