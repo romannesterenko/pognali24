@@ -10,6 +10,7 @@ const echo = new Echo({
 
     wsHost: window.location.hostname,
     wsPort: window.location.protocol === 'https:' ? 443 : 80,
+    wssPort: window.location.protocol === 'https:' ? 443 : 80,
 
     forceTLS: window.location.protocol === 'https:',
     disableStats: true,
