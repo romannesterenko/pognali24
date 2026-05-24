@@ -17,3 +17,9 @@ docker compose up -d && docker compose exec frontend npm run dev
 docker compose restart && docker compose exec frontend npm run dev
 
 docker compose down && docker compose up -d --build && docker compose exec frontend npm run dev
+
+
+++++PROD+++++
+
+cd /var/www/pognali24/ && git pull origin master && docker compose -f docker-compose.prod.yml down && docker compose -f docker-compose.prod.yml up -d --build
+

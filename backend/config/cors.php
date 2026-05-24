@@ -19,7 +19,11 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:5173', 'http://pognali-24.ru'],
+    'allowed_origins' => [
+        'http://localhost:5173',
+        'http://pognali-24.ru',
+        'https://pognali-24.ru'
+    ],
 
     'allowed_origins_patterns' => [],
 
