@@ -23,3 +23,6 @@ docker compose down && docker compose up -d --build && docker compose exec front
 
 cd /var/www/pognali24/ && git pull origin master && docker compose -f docker-compose.prod.yml down && docker compose -f docker-compose.prod.yml up -d --build
 
+cd /var/www/pognali24/ && git pull origin master && docker compose -f docker-compose.prod.yml down && docker compose -f docker-compose.prod.yml up -d --build && docker exec -it pognali24_backend_prod composer install && docker exec -it pognali24_backend_prod php artisan migrate
+
+
