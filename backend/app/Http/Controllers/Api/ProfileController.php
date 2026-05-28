@@ -42,7 +42,7 @@ class ProfileController extends Controller
     public function avatar(Request $request)
     {
         $request->validate([
-            'avatar' => ['required', 'image', 'max:2048'],
+            'avatar' => ['required', 'image'],
         ]);
 
         $profile = $request->user()->profile;

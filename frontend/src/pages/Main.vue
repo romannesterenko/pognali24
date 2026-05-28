@@ -3,7 +3,61 @@ import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import api from '@/api/axios'
 import MainLayout from '@/layouts/MainLayout.vue'
+import  { useHead } from '@vueuse/head'
 
+useHead({
+  title: 'Попутчики и поездки по России и СНГ — Pognali24',
+
+  meta: [
+    {
+      name: 'description',
+      content:
+          'Найдите попутную поездку или водителя за пару минут. Удобный сервис совместных поездок Pognali24 — быстро, безопасно и без переплат.',
+    },
+
+    {
+      name: 'keywords',
+      content:
+          'поездки, попутчики, блаблакар, попутка, поездки Россия, поездки СНГ, найти водителя',
+    },
+
+    // OpenGraph
+    {
+      property: 'og:title',
+      content: 'Попутчики и поездки — Pognali24',
+    },
+    {
+      property: 'og:description',
+      content:
+          'Найдите попутную поездку или пассажира быстро и безопасно',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+    {
+      property: 'og:url',
+      content: 'https://pognali-24.ru',
+    },
+    {
+      property: 'og:image',
+      content: 'https://pognali-24.ru/og/home.jpg',
+    },
+
+    // Twitter
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+  ],
+
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://pognali-24.ru',
+    },
+  ],
+})
 
 const router = useRouter()
 

@@ -5,7 +5,61 @@ import AuthLayout from '@/layouts/AuthLayout.vue'
 import { getUserRating, getReviewsCount } from '@/utils/userRating'
 import { useToastStore } from '@/stores/toast'
 import CityAutocomplete from "@/components/CityAutocomplete.vue"
+import  { useHead } from '@vueuse/head'
 
+useHead({
+  title: 'Мои поездки — Pognali24',
+
+  meta: [
+    {
+      name: 'description',
+      content:
+          'Мои поездки. Найдите попутную поездку или водителя за пару минут. Удобный сервис совместных поездок Pognali24 — быстро, безопасно и без переплат.',
+    },
+
+    {
+      name: 'keywords',
+      content:
+          'Мои поездки, поиск, поездки, попутчики, попутка, поездки Россия, поездки СНГ, найти водителя',
+    },
+
+    // OpenGraph
+    {
+      property: 'og:title',
+      content: 'Мои поездки. Поиск попутчиков и поездок — Pognali24',
+    },
+    {
+      property: 'og:description',
+      content:
+          'Мои поездки. Найдите попутную поездку или пассажира быстро и безопасно',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+    {
+      property: 'og:url',
+      content: 'https://pognali-24.ru/driver/trips',
+    },
+    {
+      property: 'og:image',
+      content: 'https://pognali-24.ru/og/home.jpg',
+    },
+
+    // Twitter
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+  ],
+
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://pognali-24.ru/driver/trips',
+    },
+  ],
+})
 const toast = useToastStore()
 
 // =========================

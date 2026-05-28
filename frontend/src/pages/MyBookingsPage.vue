@@ -4,7 +4,61 @@ import api from '@/api/axios'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import {getUserRating, getReviewsCount} from '@/utils/userRating'
 import { useRouter } from 'vue-router'
+import  { useHead } from '@vueuse/head'
 
+useHead({
+  title: 'Мои бронирования — Pognali24',
+
+  meta: [
+    {
+      name: 'description',
+      content:
+          'Мои бронирования. Найдите попутную поездку или водителя за пару минут. Удобный сервис совместных поездок Pognali24 — быстро, безопасно и без переплат.',
+    },
+
+    {
+      name: 'keywords',
+      content:
+          'Мои бронирования, поиск, поездки, попутчики, попутка, поездки Россия, поездки СНГ, найти водителя',
+    },
+
+    // OpenGraph
+    {
+      property: 'og:title',
+      content: 'Мои бронирования. Поиск попутчиков и поездок — Pognali24',
+    },
+    {
+      property: 'og:description',
+      content:
+          'Мои бронирования. Найдите попутную поездку или пассажира быстро и безопасно',
+    },
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+    {
+      property: 'og:url',
+      content: 'https://pognali-24.ru/bookings',
+    },
+    {
+      property: 'og:image',
+      content: 'https://pognali-24.ru/og/home.jpg',
+    },
+
+    // Twitter
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+  ],
+
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://pognali-24.ru/bookings',
+    },
+  ],
+})
 const router = useRouter()
 
 interface Booking {
@@ -273,7 +327,7 @@ onMounted(load)
       <!-- HEADER -->
       <div class="mb-8">
         <h1 class="text-3xl font-bold text-slate-900">
-          Мои поездки
+          Мои бронирования
         </h1>
 
         <p class="text-slate-500 mt-2">
