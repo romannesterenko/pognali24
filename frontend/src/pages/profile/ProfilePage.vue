@@ -208,6 +208,7 @@ const uploadAvatar = async () => {
     if (fileInput) fileInput.value = ''
     avatarFile.value = null
   } catch (e: any) {
+    console.log(e);
     toast.show({
       type: 'error',
       title: 'Ошибка',

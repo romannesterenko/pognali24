@@ -1,0 +1,12 @@
+[90m= [39m[
+    [32m"[39m[32m__construct[39m[32m"[39m,
+    [32m"[39m[32musingDriver[39m[32m"[39m,
+    [32m"[39m[32mcreateImage[39m[32m"[39m,
+    [32m"[39m[32mdecode[39m[32m"[39m,
+    [32m"[39m[32mdecodePath[39m[32m"[39m,
+    [32m"[39m[32mdecodeBinary[39m[32m"[39m,
+    [32m"[39m[32mdecodeSplFileInfo[39m[32m"[39m,
+    [32m"[39m[32mdecodeBase64[39m[32m"[39m,
+    [32m"[39m[32mdecodeDataUri[39m[32m"[39m,
+    [32m"[39m[32mdecodeStream[39m[32m"[39m,
+  ]

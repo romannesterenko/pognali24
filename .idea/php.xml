@@ -147,6 +147,8 @@
       <path value="$PROJECT_DIR$/backend/vendor/alexbklnv/php-dadata-client" />
       <path value="$PROJECT_DIR$/backend/vendor/alexbklnv/laravel-dadata" />
       <path value="$PROJECT_DIR$/backend/vendor/movemoveapp/laravel-dadata" />
+      <path value="$PROJECT_DIR$/backend/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/backend/vendor/intervention/gif" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.3" />
