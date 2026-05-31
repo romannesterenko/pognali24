@@ -3,6 +3,7 @@ import { ref, onMounted, reactive, computed } from 'vue'
 import api from '@/api/axios'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import {getUserRating, getReviewsCount} from '@/utils/userRating'
+import { useAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
 import  { useHead } from '@vueuse/head'
 
@@ -60,6 +61,8 @@ useHead({
   ],
 })
 const router = useRouter()
+
+const auth = useAuthStore()
 
 interface Booking {
   id: number
@@ -316,6 +319,13 @@ const load = async () => {
   } finally {
     loading.value = false
   }
+}
+const getUserReview = (booking: Booking) => {
+  return booking.reviews?.find(r => r.reviewer_id === auth.user.id)
+}
+
+const getOpponentReview = (booking: Booking) => {
+  return booking.reviews?.find(r => r.reviewer_id !== auth.user.id)
 }
 
 onMounted(load)
@@ -721,7 +731,7 @@ onMounted(load)
                     <!-- EXISTING REVIEW -->
                     <div
                         v-if="booking.reviews?.length && !editingReviews.has(booking.id)"
-                        class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-4 border border-amber-200 text-left min-h-[170px] flex flex-col"
+                        class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-4 border border-amber-200 text-left min-h-[50px] flex flex-col"
                     >
                       <div class="flex items-center gap-1 mb-2">
                         <div class="flex text-yellow-400 text-lg">
@@ -766,7 +776,7 @@ onMounted(load)
                         </p>
                       </div>
 
-                      <div class="flex justify-between items-center mt-4 pt-3 border-t border-amber-200">
+                      <div v-if="getUserReview(booking)" class="flex justify-between items-center mt-4 pt-3 border-t border-amber-200">
                         <span class="text-xs text-slate-500">
                           ✅ Отзыв оставлен
                         </span>
@@ -850,8 +860,8 @@ onMounted(load)
 
                     <!-- BUTTON -->
                     <div
-                        v-if="!booking.reviews?.length && !openedReviewForms.has(booking.id)"
-                        class="flex-1 flex items-center"
+                        v-if="!getUserReview(booking) && !openedReviewForms.has(booking.id)"
+                        class="flex-1 flex items-center mt-2"
                     >
                       <button
                           @click="toggleReviewForm(booking.id)"
@@ -863,8 +873,8 @@ onMounted(load)
 
                     <!-- CREATE REVIEW -->
                     <div
-                        v-if="openedReviewForms.has(booking.id) && !booking.reviews?.length"
-                        class="bg-slate-50 rounded-xl p-4 border border-slate-200 text-left"
+                        v-if="openedReviewForms.has(booking.id) && !getUserReview(booking)"
+                        class="bg-slate-50 rounded-xl p-4 mt-2 border border-slate-200 text-left"
                     >
                       <h4 class="font-semibold mb-3">
                         Как прошла поездка?
