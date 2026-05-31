@@ -133,9 +133,11 @@ const startChat = async () => {
   try {
     // Создаём или получаем conversation с этим водителем
     const res = await api.post('/conversations', {
-      user_id: trip.value.driver.id,
+      driver_id: trip.value.driver.id,
+      user_id: auth.user.id,
       trip_id: trip.value.id
     })
+
     await router.push(`/conversations/${res.data.conversation.id}`)
   } catch (e: any) {
     toast.show({
@@ -159,6 +161,11 @@ const bookingStatus = computed(() => {
   return map[status] || null
 })
 
+const hasMyBooking = (trip: object) => {
+    return trip.bookings?.find(
+        (b: any) => b.passenger_id === auth.user.id
+    )
+}
 onMounted(loadTrip)
 </script>
 
@@ -171,6 +178,7 @@ onMounted(loadTrip)
       </div>
 
       <div v-else-if="trip" class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
         <!-- Левая колонка: детали поездки -->
         <div class="lg:col-span-2 space-y-6">
           <!-- Карточка маршрута -->
@@ -369,6 +377,7 @@ onMounted(loadTrip)
 
             <!-- Кнопка "Написать водителю" -->
             <button
+                v-if="hasMyBooking(trip)"
                 @click="startChat"
                 class="w-full border border-slate-300 hover:bg-slate-50 transition py-3 rounded-xl font-medium text-slate-700"
             >

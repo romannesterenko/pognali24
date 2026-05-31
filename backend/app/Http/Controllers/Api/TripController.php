@@ -63,6 +63,7 @@ class TripController extends Controller
             'driver.driverProfile',
             'driver.receivedReviews',
             'car',
+            'bookings',
         ]);
 
         return response()->json([

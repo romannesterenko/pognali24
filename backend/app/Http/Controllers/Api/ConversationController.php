@@ -34,6 +34,34 @@ class ConversationController extends Controller
         ]);
     }
 
+    public function find(Request $request): JsonResponse
+    {
+        $conversation = Conversation::query()
+            ->whereHas('trip', function ($q) use ($request) {
+                $q->where('trip_id', $request->trip_id);
+            })
+            ->whereHas('members', function ($q) use ($request) {
+                $q->where('user_id', $request->driver_id);
+            })
+            ->whereHas('members', function ($q) use ($request) {
+                $q->where('user_id', $request->user_id);
+            })
+            ->first();
+
+        if (!$conversation) {
+            return response()->json([
+                'message' => 'Переписка не найдена. Подайте заявку для связи с водителем'
+            ], 404);
+        }
+
+        return response()->json([
+            'conversation' => $conversation
+        ]);
+
+        return response()->json([
+            'request' => $request->all()
+        ]);
+    }
     public function show(Request $request, Conversation $conversation): JsonResponse
     {
         $exists = $conversation->members()

@@ -78,6 +78,8 @@ Route::prefix('v1')->group(function () {
         });
         Route::prefix('/conversations')->group(function () {
             Route::get('/', [ConversationController::class, 'index']);
+            Route::post('/', [ConversationController::class, 'find']);
+
             Route::get('/unread-count', [ConversationController::class, 'unreadCount']);
             Route::get('/{conversation}', [ConversationController::class, 'show']);
             Route::get('/{conversation}/messages', [MessageController::class, 'index']);
